@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "run devserver": "docker compose --profile nginx-php-mysql-nodejs up -d",
+    "stop devserver": "docker compose --profile nginx-php-mysql-nodejs stop",
+    "remove devserver": "docker compose --profile nginx-php-mysql-nodejs down",
+    "recreate devserver": "docker compose --profile nginx-php-mysql-nodejs up -d --build",
+    "remove old images": "docker rmi $(docker images -qa -f 'dangling=true')"
+  }
+}

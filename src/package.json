@@ -1,0 +1,29 @@
+{
+  "name": "vite-build-system",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run clearCache",
+    "design": "tailwind-config-viewer -o -p 3010",
+    "favicons": "node ./npm-scripts/favicons.mjs",
+    "clearCache": "node ./npm-scripts/clearMODXCache.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@tailwindcss/typography": "^0.5.7",
+    "dotenv": "^16.0.2",
+    "postcss": "^8.4.16",
+    "postcss-combine-media-query": "^1.0.1",
+    "postcss-csso": "^6.0.1",
+    "postcss-import": "^15.0.0",
+    "postcss-preset-env": "^7.8.2",
+    "sharp": "^0.31.0",
+    "tailwind-config-viewer": "^1.7.2",
+    "tailwindcss": "^3.1.8",
+    "vite": "^3.1.1",
+    "vite-plugin-full-reload": "^1.0.4",
+    "vite-plugin-static-copy": "^0.9.0"
+  }
+}

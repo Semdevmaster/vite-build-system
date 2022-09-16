@@ -1,0 +1,34 @@
+@layer components {
+  .ui-btn {
+    font-size: 15px;
+    font-weight: 400;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    padding: 0.4em 2em;
+    user-select: none;
+    transition: all .3s cubic-bezier(0.25, 0.8, 0.5, 1) 0ms,
+    color 0s ease,
+    background-size .6s,
+    background-color .6s;
+    vertical-align: baseline;
+    text-decoration: none;
+    border-radius: 0;
+    outline: 0;
+    justify-self: center;
+    touch-action: manipulation;
+    will-change: box-shadow, transition;
+    color: inherit;
+    @apply bg-gray-300;
+  }
+
+  .ui-btn:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.26);
+    background-color: rgba(0, 0, 0, 0.12);
+    box-shadow: none;
+  }
+}

@@ -6,6 +6,6 @@ module.exports = ({env}) => ({
     require('tailwindcss')({config: `./tailwind.config.${process.env.VITE_ASSETS_VERSION}.js`}),
     require('postcss-preset-env')({stage: 2, autoprefixer: {cascade: false}}),
     env === 'production' ? require('postcss-csso')({restructure: false, comments: false}) : false,
-    env === 'production' ? require('postcss-combine-media-query')() : false
+    env === 'production' ? require('postcss-sort-media-queries')() : false
   ]
 })

@@ -16,7 +16,7 @@ indent_size = 4
 [*.xml]
 indent_size = 4
 
-[*.yml]
+[{*.yaml, *.yml}]
 indent_size = 4
 
 [Makefile]

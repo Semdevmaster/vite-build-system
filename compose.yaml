@@ -72,9 +72,9 @@ services:
             DEVELOPMENT_PORT: ${VITE_APP_PORT}
         volumes:
             - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
-            - ./server/php/${PHP_VERSION}/php-ini/custom.d:/usr/local/etc/php/custom.d:ro
-            - ./server/php/${PHP_VERSION}/extensions:/usr/local/etc/php/custom.d:ro
             - ./server/php/${PHP_VERSION}/php-ini/php.ini:/usr/local/etc/php/php.ini:ro
+            - ./server/php/${PHP_VERSION}/php-ini/custom.d:/usr/local/etc/php/custom.d:ro
+            - ./server/php/${PHP_VERSION}/extensions:/usr/local/etc/php/extensions:ro
             - ./server/php/${PHP_VERSION}/fpm-conf/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
             - ./server/php/${PHP_VERSION}/fpm-conf/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
         networks:

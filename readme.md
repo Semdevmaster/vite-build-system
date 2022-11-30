@@ -1,11 +1,27 @@
 # Быстрые команды
 
+## Запуск сервера
+
+Находясь в терминале, в корне проекта
+
+```
+make server-start
+```
+
+## Остановка сервера
+
+Находясь в терминале, в корне проекта
+
+```
+make server-stop
+```
+
 ## Установка Laravel
 
 Находясь в терминале, в корне проекта
 
 ```
-make install-laravel
+make laravel-install
 ```
 
 ## Установка MODX
@@ -13,7 +29,7 @@ make install-laravel
 Находясь в терминале, в корне проекта
 
 ```
-make install-modx
+make modx-install
 ```
 
 ## Сделать бэкап MySQL
@@ -29,7 +45,7 @@ make mysql-backup
 Находясь в терминале, в корне проекта
 
 ```
-make generate-ssl
+make ssl-generate
 ```
 
 ## Сгенерировать WOFF2 шрифт

@@ -5,10 +5,10 @@ server-start:
 server-stop:
 	docker compose stop
 
-install-laravel:
+laravel-install:
 	docker compose run --rm php-cli composer create-project --prefer-dist laravel/laravel $(APP_CODE_PATH_CONTAINER)
 
-install-modx:
+modx-install:
 	docker compose run --rm php-cli composer create-project modx/revolution $(APP_CODE_PATH_CONTAINER)
 
 mysql-backup:

@@ -15,10 +15,10 @@ export default ({mode}) => {
       host: false,
       port: process.env.VITE_APP_PORT,
       cors: true,
-      /*https: {
-        cert: readFileSync(`../server/nginx/ssl/${process.env.VITE_SSL_CERT}`),
-        key: readFileSync(`../server/nginx/ssl/${process.env.VITE_SSL_KEY}`)
-      }*/
+      https: {
+        cert: readFileSync(`../server/certs/${process.env.VITE_SSL_CERT}`),
+        key: readFileSync(`../server/certs/${process.env.VITE_SSL_KEY}`)
+      }
     },
     build: {
       minify: true,

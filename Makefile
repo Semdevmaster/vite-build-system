@@ -15,7 +15,7 @@ mysql-backup:
 	docker compose exec mysql /usr/bin/mysqldump -u root --password=$(MYSQL_ROOT_PASSWORD) $(APP_BD_NAME) \
 	| gzip > ~/backups/$(APP_BD_NAME)_backup-`date +\%d.\%m.\%Y`.sql.gz
 
-ssl-generate:
+generate-ssl:
 	cd server/certs \
  	&& mkcert -cert-file $(APP_HOST).pem -key-file $(APP_HOST)-key.pem $(APP_HOST) *.$(APP_HOST) localhost 127.0.0.1 ::1
 

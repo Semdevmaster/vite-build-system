@@ -4,10 +4,13 @@ import {defineConfig, loadEnv} from 'vite';
 import {viteStaticCopy} from 'vite-plugin-static-copy';
 import FullReload from 'vite-plugin-full-reload'
 import imgConvert from './vite-plugins/vite-plugin-imgconvert'
+import setAssetsPaths from "./vite-plugins/vite-plugin-setassetspaths";
+import {fileURLToPath} from "url";
 
 export default ({mode}) => {
   process.env = {...process.env, ...loadEnv(mode, '../')}
   return defineConfig({
+    appType: 'custom',
     publicDir: false,
     cssCodeSplit: false,
     base: mode === 'production' ? `/assets/${process.env.VITE_ASSETS_VERSION}/` : '/',
@@ -26,7 +29,9 @@ export default ({mode}) => {
       emptyOutDir: true,
       assetsDir: '',
       outDir: `../app/assets/${process.env.VITE_ASSETS_VERSION}`,
-      polyfillModulePreload: false,
+      modulePreload: {
+        polyfill: false
+      },
       rollupOptions: {
         input: [
           `assets/${process.env.VITE_ASSETS_VERSION}/js/main.js`,
@@ -34,17 +39,12 @@ export default ({mode}) => {
         ],
         output: {
           assetFileNames: (assetInfo) => {
-            const {dir, ext} = parse(assetInfo.name)
-            switch (ext) {
-              case '.svg':
-              case '.png':
-              case '.jpg':
-              case '.jpeg':
-                const resultPath = dir.substring(dir.lastIndexOf(process.env.VITE_ASSETS_VERSION) + 3)
-                return `${resultPath}/[name]-[hash][extname]`
-              default:
-                return `[ext]/[name]-[hash][extname]`;
+            let {ext} = parse(assetInfo.name);
+            ext = ext.split('.').at(1)
+            if (ext === 'css') {
+              return `${ext}/[name]-[hash][extname]`;
             }
+            return `[name]-[hash][extname]`;
           },
           chunkFileNames: 'js/chunks/[name]-[hash].js',
           entryFileNames: 'js/[name]-[hash].js'
@@ -52,11 +52,13 @@ export default ({mode}) => {
       },
     },
     plugins: [
-      FullReload([
+      FullReload(
+        [
           'app/core/app/plugins/smarty/*.php',
           'app/core/app/snippets/**/*.php'
         ],
-        {root: resolve(__dirname, '../')}),
+        {root: resolve(__dirname, '../')}
+      ),
       viteStaticCopy({
         targets: [
           {
@@ -69,11 +71,12 @@ export default ({mode}) => {
           }
         ]
       }),
-      imgConvert(),
+      setAssetsPaths(),
+      imgConvert()
     ],
     resolve: {
       alias: {
-        '@': resolve(__dirname, `./assets/${process.env.VITE_ASSETS_VERSION}`)
+        '@': fileURLToPath(new URL(`./assets/${process.env.VITE_ASSETS_VERSION}`, import.meta.url)),
       }
     }
   });

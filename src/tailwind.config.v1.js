@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     '../app/*.html',
-    '../app/assets/v1/js/**/*.js'
+    './assets/v1/js/**/*.js'
   ],
   theme: {
     screens: {
@@ -31,9 +31,9 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/container-queries'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
     require('./tailwind-plugins/iconComponent')
   ],
 }

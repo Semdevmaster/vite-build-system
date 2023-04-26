@@ -17,7 +17,7 @@ mysql-backup:
 
 generate-ssl:
 	cd server/certs \
- 	&& mkcert -cert-file $(APP_HOST).pem -key-file $(APP_HOST)-key.pem $(APP_HOST) *.$(APP_HOST) localhost 127.0.0.1 ::1
+ 	&& mkcert -cert-file $(APP_HOST).pem -key-file $(APP_HOST)-key.pem $(APP_HOST) *.$(APP_HOST)
 
 xdebug-enable:
 	docker compose up -d php;

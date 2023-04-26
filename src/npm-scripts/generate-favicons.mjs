@@ -1,12 +1,12 @@
+import {resolve} from 'node:path'
 import sharp from 'sharp'
 import dotenv from 'dotenv';
-import path from 'path'
 
-dotenv.config({path: path.resolve(process.cwd(), '../', '.env')})
+dotenv.config({path: resolve(process.cwd(), '../', '.env')})
 
-const faviconsPath = path.resolve(process.cwd(), 'assets', process.env.APP_ASSETS_VERSION)
+const faviconsPath = resolve(process.cwd(), 'assets', process.env.APP_ASSETS_VERSION)
 
-const faviconsBuild = () => {
+const generateFaviconsSetFromSVG = () => {
   const sharpStream = sharp(
     `${faviconsPath}/img/favicons/favicon.svg`,
     {
@@ -49,4 +49,4 @@ const faviconsBuild = () => {
     });
 }
 
-faviconsBuild()
+generateFaviconsSetFromSVG()

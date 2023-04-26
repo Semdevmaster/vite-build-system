@@ -6,24 +6,24 @@
     "dev": "vite",
     "build": "vite build && npm run clearCache",
     "design": "tailwind-config-viewer -o -p 3010",
-    "favicons": "node ./npm-scripts/favicons.mjs",
-    "clearCache": "node ./npm-scripts/clearMODXCache.mjs"
+    "generate favicons": "node ./npm-scripts/generate-favicons.mjs",
+    "clear MODX cache": "node ./npm-scripts/clear-modx-cache.mjs"
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "dotenv": "^16.0.3",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.23",
     "postcss-csso": "^6.0.1",
     "postcss-import": "^15.1.0",
-    "postcss-preset-env": "^8.3.1",
-    "postcss-sort-media-queries": "^4.3.0",
+    "postcss-preset-env": "^8.3.2",
+    "postcss-sort-media-queries": "^5.1.0",
     "sharp": "^0.32.0",
     "tailwind-config-viewer": "^1.7.2",
-    "tailwindcss": "^3.3.1",
-    "vite": "^4.2.1",
+    "tailwindcss": "^3.3.2",
+    "vite": "^4.3.2",
     "vite-plugin-full-reload": "^1.0.5",
-    "vite-plugin-static-copy": "^0.13.1"
+    "vite-plugin-static-copy": "^0.14.0"
   }
 }

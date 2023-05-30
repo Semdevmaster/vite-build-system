@@ -34,6 +34,6 @@ module.exports = {
     require('@tailwindcss/container-queries'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('./tailwind-plugins/iconComponent')
+    require('./tailwind-plugins/icon-component')
   ],
 }

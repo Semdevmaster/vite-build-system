@@ -5,24 +5,35 @@ import {defineConfig, loadEnv} from 'vite';
 import {viteStaticCopy} from 'vite-plugin-static-copy';
 import FullReload from 'vite-plugin-full-reload'
 import imgConvert from './vite-plugins/vite-plugin-imgconvert'
+import simplifyManifest from './vite-plugins/vite-plugin-simplify-manifest'
 
 export default ({mode}) => {
   process.env = {...process.env, ...loadEnv(mode, '../')}
   return defineConfig({
     appType: 'custom',
     publicDir: false,
-    cssCodeSplit: false,
+    esbuild: {
+      target: 'esnext'
+    },
+    css: {
+      transformer: 'postcss',
+      devSourcemap: true
+    },
     base: mode === 'production' ? `/assets/${process.env.VITE_ASSETS_VERSION}/` : '/',
     server: {
       host: false,
       port: process.env.VITE_APP_PORT,
       cors: true,
+      origin: `https://${process.env.VITE_APP_HOST}${process.env.VITE_APP_PORT}`,
       https: {
         cert: readFileSync(`../server/certs/${process.env.VITE_SSL_CERT}`),
         key: readFileSync(`../server/certs/${process.env.VITE_SSL_KEY}`)
-      }
+      },
     },
     build: {
+      cssCodeSplit: false,
+      cssMinify: false,
+      target: 'esnext',
       write: true,
       minify: true,
       manifest: 'assets.json',
@@ -77,7 +88,8 @@ export default ({mode}) => {
           }
         ]
       }),
-      imgConvert()
+      imgConvert(),
+      simplifyManifest()
     ],
     resolve: {
       alias: {
